@@ -10,5 +10,5 @@ pantalla = pg.display.set_mode((ancho,alto))
 while TRUE:
     for eveto in pg.event.get():
         if eveto.type == pg.QUIT:
-            sys.exit
+            sys.exit()
     pg.display.flip()
