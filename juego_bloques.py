@@ -2,6 +2,7 @@ import sys
 import pygame as pg
 import bolita
 import jugador
+import nivel1
 
 ancho = 640
 alto = 480
@@ -19,7 +20,7 @@ pg.display.set_caption('Juego de ladrillos')
 #Crea la bolita
 bolita = bolita.Bolita(ancho,alto)
 jugador = jugador.Jugador(ancho,alto)
-
+muro= nivel1.Muro (cantidad_ladrillos=112,ancho=ancho) 
 #Ajustar repeticion de evento de teclapresionada
 pg.key.set_repeat(30)
 
@@ -36,13 +37,18 @@ while True:
             jugador.update(eveto)
     
     #Actualiza la posicion de la bolita 
-    bolita.update()  
+    bolita.update()
+    #Colision entre bola y paleta
+    if pg.sprite.collide_rect(bolita,jugador):
+        bolita.speed[1] = -bolita.speed[1]   
     #Rellenamos la pantalla
     pantalla.fill(color_fondo)           
     #dibuja la bolita en la pantalla
     pantalla.blit(bolita.image,bolita.rect)
     #Dibuja paleta
-    pantalla.blit(jugador.image,jugador.rect) 
+    pantalla.blit(jugador.image,jugador.rect)
+    #Dibuja el muro
+    muro.draw(pantalla) 
     #Actualiza los objetos en la pantalla
     pg.display.flip()
 
