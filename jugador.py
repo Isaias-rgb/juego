@@ -8,10 +8,6 @@ class Jugador(pg.sprite.Sprite):
         self.image = pg.image.load('imagenes/paleta.png')
         self.rect = self.image.get_rect()
         self.rect.center = (ancho/2,alto-20)
-        #formas de posicionar una imagen
-        #self.rect.bottom = alto/2
-        #self.rect.centerx = ancho / 2
-        #self.rect.centery = alto / 2 
         self.speed = [0,0]
 
     def update(self,evevto):
